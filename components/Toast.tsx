@@ -6,8 +6,6 @@ interface ToastProps {
 }
 
 export default function Toast({ show, message }: ToastProps) {
-  if (!show) return null
-
   return (
     <div
       role="status"
@@ -16,17 +14,19 @@ export default function Toast({ show, message }: ToastProps) {
         position: 'fixed',
         bottom: 32,
         left: '50%',
-        transform: 'translateX(-50%)',
+        transform: show ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(100px)',
         background: '#343434',
         color: '#FFFBF0',
         borderRadius: 1000,
-        padding: '12px 24px',
+        padding: '14px 28px',
         fontSize: 15,
         fontFamily: 'Inter, sans-serif',
-        fontWeight: 500,
-        boxShadow: '0px 4px 16px rgba(0,0,0,0.25)',
-        zIndex: 1000,
+        fontWeight: 600,
+        boxShadow: '0px 4px 10px rgba(0,0,0,0.15)',
+        zIndex: 999,
         whiteSpace: 'nowrap',
+        transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
+        pointerEvents: 'none',
       }}
     >
       {message}
