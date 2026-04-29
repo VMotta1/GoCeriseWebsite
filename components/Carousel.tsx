@@ -14,6 +14,20 @@ interface CarouselProps {
   steps: Step[]
 }
 
+const arrowStyle: React.CSSProperties = {
+  width: 40,
+  height: 40,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  opacity: 0.6,
+  transition: 'opacity 0.2s',
+  flexShrink: 0,
+}
+
 export default function Carousel({ steps }: CarouselProps) {
   const [active, setActive] = useState(0)
   const total = steps.length
@@ -26,24 +40,11 @@ export default function Carousel({ steps }: CarouselProps) {
   }, [total])
 
   return (
-    <div style={{ width: '100%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div
         className="carousel-inner"
         style={{ display: 'flex', alignItems: 'center', width: 970, gap: 64, position: 'relative' }}
       >
-        {/* Prev arrow */}
-        <button
-          onClick={() => goToSlide(active - 1)}
-          aria-label="Previous"
-          style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: -60, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.6, transition: 'opacity 0.2s', zIndex: 10 }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-          onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M13 4L7 10L13 16" stroke="#343434" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-
         {/* Step cards */}
         <div
           className="steps-col"
@@ -78,31 +79,60 @@ export default function Carousel({ steps }: CarouselProps) {
           ))}
         </div>
 
-        {/* Phone column */}
+        {/* Phone column — arrows flank the phone image so they work on all screen sizes */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
-          <div
-            className="phone-wrap"
-            style={{ position: 'relative', width: 310, height: 649 }}
-          >
-            {steps.map((step, i) => (
-              <Image
-                key={step.image}
-                src={step.image}
-                alt={step.alt}
-                width={310}
-                height={649}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  opacity: i === active ? 1 : 0,
-                  transition: 'opacity 0.4s ease',
-                  pointerEvents: i === active ? 'auto' : 'none',
-                }}
-              />
-            ))}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+            {/* Prev arrow */}
+            <button
+              onClick={() => goToSlide(active - 1)}
+              aria-label="Previous"
+              style={arrowStyle}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M13 4L7 10L13 16" stroke="#343434" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            {/* Phone image */}
+            <div
+              className="phone-wrap"
+              style={{ position: 'relative', width: 310, height: 649 }}
+            >
+              {steps.map((step, i) => (
+                <Image
+                  key={step.image}
+                  src={step.image}
+                  alt={step.alt}
+                  width={310}
+                  height={649}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    opacity: i === active ? 1 : 0,
+                    transition: 'opacity 0.4s ease',
+                    pointerEvents: i === active ? 'auto' : 'none',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Next arrow */}
+            <button
+              onClick={() => goToSlide(active + 1)}
+              aria-label="Next"
+              style={arrowStyle}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7 4L13 10L7 16" stroke="#343434" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
 
           {/* Dots */}
@@ -126,19 +156,6 @@ export default function Carousel({ steps }: CarouselProps) {
             ))}
           </div>
         </div>
-
-        {/* Next arrow */}
-        <button
-          onClick={() => goToSlide(active + 1)}
-          aria-label="Next"
-          style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', right: -60, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.6, transition: 'opacity 0.2s', zIndex: 10 }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-          onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7 4L13 10L7 16" stroke="#343434" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
       </div>
     </div>
   )
