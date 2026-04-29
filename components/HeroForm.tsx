@@ -7,7 +7,7 @@ export default function HeroForm() {
   const [email, setEmail] = useState('')
   const [showToast, setShowToast] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
     setEmail('')
@@ -67,7 +67,7 @@ export default function HeroForm() {
           Join Waitlist
         </button>
       </form>
-      <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />
+      {showToast && <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />}
     </>
   )
 }
