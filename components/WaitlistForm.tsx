@@ -70,7 +70,7 @@ export default function WaitlistForm() {
           <div style={{ width: 1, height: 40, background: '#e0e0e0', flexShrink: 0 }} />
           <input
             type="email"
-            placeholder="Your email address"
+            placeholder="Your email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             autoComplete="email"
