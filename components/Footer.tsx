@@ -33,10 +33,12 @@ export default function Footer() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {[
                     { label: 'Email', href: 'mailto:help@gocerise.com' },
-                    { label: 'Instagram', href: '#' },
-                    { label: 'LinkedIn', href: '#' },
+                    { label: 'Instagram', href: 'https://www.instagram.com/p/DWC4tfSjpBs/' },
+                    { label: 'LinkedIn', href: 'https://ca.linkedin.com/company/gocerise' },
                   ].map(link => (
                     <a key={link.label} href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       style={{ fontSize: 15, color: '#343434', textDecoration: 'none', transition: 'opacity 0.2s' }}
                       onMouseEnter={e => (e.currentTarget.style.opacity = '0.6')}
                       onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
@@ -45,11 +47,13 @@ export default function Footer() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {[
-                    { label: 'TikTok', href: '#' },
+                    { label: 'TikTok', href: 'https://www.tiktok.com/@_gocerise' },
                     { label: 'Twitter', href: '#' },
                     { label: 'Facebook', href: '#' },
                   ].map(link => (
                     <a key={link.label} href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       style={{ fontSize: 15, color: '#343434', textDecoration: 'none', transition: 'opacity 0.2s' }}
                       onMouseEnter={e => (e.currentTarget.style.opacity = '0.6')}
                       onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
