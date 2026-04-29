@@ -5,16 +5,29 @@ import Toast from './Toast'
 import { supabase } from '@/lib/supabase'
 
 export default function WaitlistForm() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [showToast, setShowToast] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!email) return
-    await supabase.from('waitlist_emails').insert({ email, source: 'waitlist' })
+    if (!name || !email) return
+    await supabase.from('waitlist').insert({ name, email })
+    setName('')
     setEmail('')
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3500)
+  }
+
+  const inputStyle: React.CSSProperties = {
+    flex: 1,
+    border: 'none',
+    outline: 'none',
+    background: 'transparent',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: 30,
+    color: '#343434',
+    padding: '0 32px',
   }
 
   return (
@@ -31,25 +44,27 @@ export default function WaitlistForm() {
           padding: 16,
           width: 683,
           height: 100,
+          gap: 0,
         }}
       >
         <input
+          type="text"
+          placeholder="Your name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          autoComplete="name"
+          className="waitlist-input"
+          style={inputStyle}
+        />
+        <div style={{ width: 1, height: 40, background: '#e0e0e0', flexShrink: 0 }} />
+        <input
           type="email"
-          placeholder="Enter your email address"
+          placeholder="Your email address"
           value={email}
           onChange={e => setEmail(e.target.value)}
           autoComplete="email"
           className="waitlist-input"
-          style={{
-            flex: 1,
-            border: 'none',
-            outline: 'none',
-            background: 'transparent',
-            fontFamily: 'Inter, sans-serif',
-            fontSize: 30,
-            color: '#343434',
-            padding: '0 32px',
-          }}
+          style={inputStyle}
         />
         <button
           type="submit"

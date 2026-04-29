@@ -5,16 +5,30 @@ import Toast from './Toast'
 import { supabase } from '@/lib/supabase'
 
 export default function HeroForm() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [showToast, setShowToast] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!email) return
-    await supabase.from('waitlist_emails').insert({ email, source: 'hero' })
+    if (!name || !email) return
+    await supabase.from('waitlist').insert({ name, email })
+    setName('')
     setEmail('')
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3500)
+  }
+
+  const inputStyle: React.CSSProperties = {
+    flex: 1,
+    border: 'none',
+    outline: 'none',
+    background: 'transparent',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: 15,
+    color: '#343434',
+    padding: '0 12px',
+    minWidth: 0,
   }
 
   return (
@@ -33,21 +47,21 @@ export default function HeroForm() {
         }}
       >
         <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          autoComplete="name"
+          style={inputStyle}
+        />
+        <div style={{ width: 1, height: 24, background: '#e0e0e0', flexShrink: 0 }} />
+        <input
           type="email"
-          placeholder="Enter your email address"
+          placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           autoComplete="email"
-          style={{
-            flex: 1,
-            border: 'none',
-            outline: 'none',
-            background: 'transparent',
-            fontFamily: 'Inter, sans-serif',
-            fontSize: 15,
-            color: '#343434',
-            padding: '0 16px',
-          }}
+          style={inputStyle}
         />
         <button
           type="submit"
@@ -66,7 +80,7 @@ export default function HeroForm() {
             whiteSpace: 'nowrap',
           }}
         >
-          <span style={{ position: 'relative', top: -2 }}>Join Waitlist</span>
+          <span style={{ position: 'relative', top: -2 }}>Join</span>
         </button>
       </form>
       {showToast && <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />}
