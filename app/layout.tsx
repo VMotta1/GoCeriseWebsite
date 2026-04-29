@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] })
 export const metadata: Metadata = {
   title: 'GoCerise — Cherry pick your grocery prices',
   description: 'Compare grocery prices across nearby stores and find the best deals in seconds.',
+  icons: { icon: '/favicon.png' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
