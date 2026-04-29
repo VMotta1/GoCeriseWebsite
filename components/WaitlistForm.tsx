@@ -67,7 +67,7 @@ export default function WaitlistForm() {
             className="waitlist-input"
             style={inputStyle}
           />
-          <div className="waitlist-divider" style={{ width: 1, height: 40, background: '#e0e0e0', flexShrink: 0 }} />
+          <div className="waitlist-divider" />
           <input
             type="email"
             placeholder="Your email"
