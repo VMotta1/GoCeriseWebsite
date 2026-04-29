@@ -33,7 +33,7 @@ export default function Footer() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {[
                     { label: 'Email', href: 'mailto:help@gocerise.com' },
-                    { label: 'Instagram', href: 'https://www.instagram.com/p/DWC4tfSjpBs/' },
+                    { label: 'Instagram', href: 'https://www.instagram.com/gocerise/' },
                     { label: 'LinkedIn', href: 'https://ca.linkedin.com/company/gocerise' },
                   ].map(link => (
                     <a key={link.label} href={link.href}
