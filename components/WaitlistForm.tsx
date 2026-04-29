@@ -42,7 +42,7 @@ export default function WaitlistForm() {
           borderRadius: 1500,
           boxShadow: '0px 4px 10px rgba(0,0,0,0.15)',
           padding: 16,
-          width: 683,
+          width: 860,
           height: 100,
           gap: 0,
         }}
