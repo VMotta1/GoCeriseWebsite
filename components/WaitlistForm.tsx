@@ -2,14 +2,16 @@
 
 import { useState } from 'react'
 import Toast from './Toast'
+import { supabase } from '@/lib/supabase'
 
 export default function WaitlistForm() {
   const [email, setEmail] = useState('')
   const [showToast, setShowToast] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
+    await supabase.from('waitlist_emails').insert({ email, source: 'waitlist' })
     setEmail('')
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3500)
@@ -69,7 +71,7 @@ export default function WaitlistForm() {
           onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
           onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
         >
-          Join Waitlist
+          <span style={{ position: 'relative', top: -4 }}>Join Waitlist</span>
         </button>
       </form>
       {showToast && <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />}

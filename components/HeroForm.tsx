@@ -2,14 +2,16 @@
 
 import { useState } from 'react'
 import Toast from './Toast'
+import { supabase } from '@/lib/supabase'
 
 export default function HeroForm() {
   const [email, setEmail] = useState('')
   const [showToast, setShowToast] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
+    await supabase.from('waitlist_emails').insert({ email, source: 'hero' })
     setEmail('')
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3500)
@@ -64,7 +66,7 @@ export default function HeroForm() {
             whiteSpace: 'nowrap',
           }}
         >
-          Join Waitlist
+          <span style={{ position: 'relative', top: -2 }}>Join Waitlist</span>
         </button>
       </form>
       {showToast && <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />}
