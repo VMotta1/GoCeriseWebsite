@@ -40,3 +40,7 @@ body {
 @media (max-width: 767px) {
   .nav-link { display: none !important; }
 }
+
+.hero-title { font-size: 90px; }
+@media (max-width: 1023px) { .hero-title { font-size: 56px; } }
+@media (max-width: 767px) { .hero-title { font-size: 38px; } }
