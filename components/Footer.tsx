@@ -68,7 +68,7 @@ export default function Footer() {
               <div style={{ fontWeight: 700, fontSize: 20, color: '#343434' }}>Legal &amp; Support</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {[
-                  { label: 'Privacy Policy', href: '#' },
+                  { label: 'Privacy Policy', href: '/privacy' },
                   { label: 'Terms of Service', href: '#' },
                   { label: 'help@gocerise.com', href: 'mailto:help@gocerise.com' },
                 ].map(link => (

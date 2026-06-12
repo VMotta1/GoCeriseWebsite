@@ -46,7 +46,7 @@ export default function Navbar() {
         }}
       >
         <a
-          href="#"
+          href="/"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
           <a
-            href="#how"
+            href="/#how"
             className="nav-link"
             style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
@@ -74,7 +74,7 @@ export default function Navbar() {
             How it works
           </a>
           <a
-            href="#about"
+            href="/#about"
             className="nav-link"
             style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
@@ -83,7 +83,7 @@ export default function Navbar() {
             About us
           </a>
           <a
-            href="#waitlist"
+            href="/#waitlist"
             style={{
               fontSize: 15,
               fontWeight: 700,
