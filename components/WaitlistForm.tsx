@@ -99,7 +99,7 @@ export default function WaitlistForm() {
           onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
           onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
         >
-          Join Waitlist
+          Join Mailing List
         </button>
       </form>
       {showToast && <Toast show={showToast} message="🍒 You're on the list! We'll be in touch." />}

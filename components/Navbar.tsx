@@ -97,7 +97,7 @@ export default function Navbar() {
             onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
-            Join Waitlist
+            Join Mailing List
           </a>
         </div>
       </nav>

@@ -2,34 +2,45 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import HeroForm from '@/components/HeroForm'
 
+jest.mock('../lib/supabase', () => ({
+  supabase: {
+    from: () => ({ insert: jest.fn().mockResolvedValue({ error: null }) }),
+  },
+}))
+
 describe('HeroForm', () => {
-  it('renders email input and submit button', () => {
+  it('renders name/email inputs and submit button', () => {
     render(<HeroForm />)
-    expect(screen.getByPlaceholderText('Enter your email address')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Join Waitlist' })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Name')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Join' })).toBeInTheDocument()
   })
 
-  it('clears input on submit', async () => {
+  it('clears inputs on submit', async () => {
     const user = userEvent.setup()
     render(<HeroForm />)
-    const input = screen.getByPlaceholderText('Enter your email address')
-    await user.type(input, 'test@example.com')
-    await user.click(screen.getByRole('button', { name: 'Join Waitlist' }))
-    expect(input).toHaveValue('')
+    const name = screen.getByPlaceholderText('Name')
+    const email = screen.getByPlaceholderText('Email')
+    await user.type(name, 'Test User')
+    await user.type(email, 'test@example.com')
+    await user.click(screen.getByRole('button', { name: 'Join' }))
+    expect(name).toHaveValue('')
+    expect(email).toHaveValue('')
   })
 
   it('shows toast after submit', async () => {
     const user = userEvent.setup()
     render(<HeroForm />)
-    await user.type(screen.getByPlaceholderText('Enter your email address'), 'test@example.com')
-    await user.click(screen.getByRole('button', { name: 'Join Waitlist' }))
-    expect(screen.getByText("🍒 You're on the list! We'll be in touch.")).toBeInTheDocument()
+    await user.type(screen.getByPlaceholderText('Name'), 'Test User')
+    await user.type(screen.getByPlaceholderText('Email'), 'test@example.com')
+    await user.click(screen.getByRole('button', { name: 'Join' }))
+    expect(await screen.findByText("🍒 You're on the list! We'll be in touch.")).toBeInTheDocument()
   })
 
-  it('does not submit when input is empty', async () => {
+  it('does not submit when inputs are empty', async () => {
     const user = userEvent.setup()
     render(<HeroForm />)
-    await user.click(screen.getByRole('button', { name: 'Join Waitlist' }))
+    await user.click(screen.getByRole('button', { name: 'Join' }))
     expect(screen.queryByText("🍒 You're on the list! We'll be in touch.")).not.toBeInTheDocument()
   })
 })

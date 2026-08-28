@@ -26,13 +26,13 @@ export default function Waitlist() {
             className="section-title"
             style={{ fontWeight: 700, fontSize: 50, color: '#343434', textAlign: 'center' }}
           >
-            Join Early Access Waitlist
+            Join Mailing List
           </h2>
           <p
             className="section-subtitle"
             style={{ fontSize: 30, color: 'rgba(52,52,52,0.5)', textAlign: 'center' }}
           >
-            Be first to try our app and start saving
+            Be the first to hear about our app
           </p>
         </div>
         <WaitlistForm />

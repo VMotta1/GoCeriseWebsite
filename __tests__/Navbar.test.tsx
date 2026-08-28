@@ -6,7 +6,7 @@ describe('Navbar', () => {
     render(<Navbar />)
     expect(screen.getByText('How it works')).toBeInTheDocument()
     expect(screen.getByText('About us')).toBeInTheDocument()
-    expect(screen.getByText('Join Waitlist')).toBeInTheDocument()
+    expect(screen.getByText('Join Mailing List')).toBeInTheDocument()
   })
 
   it('toggles scrolled state when scrollY exceeds 85% of viewport height', () => {
