@@ -32,7 +32,7 @@ export default function Waitlist() {
             className="section-subtitle"
             style={{ fontSize: 30, color: 'rgba(52,52,52,0.5)', textAlign: 'center' }}
           >
-            Be the first to hear about our app
+            Be the first to hear about updates to our app
           </p>
         </div>
         <WaitlistForm />
