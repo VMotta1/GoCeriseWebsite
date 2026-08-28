@@ -45,3 +45,21 @@ describe('toLegalSegments', () => {
     expect(segments[0].kind).toBe('email')
   })
 })
+
+describe('toLegalSegments — bare gocerise.com', () => {
+  it('links a bare domain without the www prefix', () => {
+    expect(toLegalSegments('our website at gocerise.com is a small set')).toEqual([
+      { kind: 'text', value: 'our website at ' },
+      { kind: 'url', value: 'gocerise.com', href: 'https://gocerise.com' },
+      { kind: 'text', value: ' is a small set' },
+    ])
+  })
+
+  it('does not split an email into a bare-domain link', () => {
+    expect(toLegalSegments('email privacy@gocerise.com today')).toEqual([
+      { kind: 'text', value: 'email ' },
+      { kind: 'email', value: 'privacy@gocerise.com', href: 'mailto:privacy@gocerise.com' },
+      { kind: 'text', value: ' today' },
+    ])
+  })
+})

@@ -107,5 +107,6 @@ body {
   .legal-page { padding: 120px 20px 64px !important; }
   .legal-title { font-size: 30px !important; }
   .legal-heading { font-size: 21px !important; }
+  .legal-subheading { font-size: 18px !important; }
   .legal-body { font-size: 16px !important; }
 }

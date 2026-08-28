@@ -5,7 +5,7 @@ export type LegalSegment =
   | { kind: 'url'; value: string; href: string }
 
 const EMAIL = String.raw`[\w.+-]+@[\w-]+(?:\.[\w-]+)+`
-const GOCERISE_URL = String.raw`www\.gocerise\.com(?:\/[\w-]+)*`
+const GOCERISE_URL = String.raw`(?:www\.)?gocerise\.com(?:\/[\w-]+)*`
 
 /** Capturing group so String.split keeps the matches interleaved with the prose. */
 const LINKABLE = new RegExp(`(${EMAIL}|${GOCERISE_URL})`, 'g')
