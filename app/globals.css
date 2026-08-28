@@ -98,3 +98,14 @@ body {
   .footer-inner { padding: 64px 20px !important; }
   .footer-contact-cols { flex-direction: column !important; gap: 8px !important; }
 }
+
+@media (max-width: 1023px) {
+  .legal-page { padding: 140px 32px 80px !important; }
+  .legal-title { font-size: 38px !important; }
+}
+@media (max-width: 767px) {
+  .legal-page { padding: 120px 20px 64px !important; }
+  .legal-title { font-size: 30px !important; }
+  .legal-heading { font-size: 21px !important; }
+  .legal-body { font-size: 16px !important; }
+}

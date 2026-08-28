@@ -69,7 +69,7 @@ export default function Footer() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {[
                   { label: 'Privacy Policy', href: '/privacy' },
-                  { label: 'Terms of Service', href: '#' },
+                  { label: 'Terms of Service', href: '/terms-of-service' },
                   { label: 'help@gocerise.com', href: 'mailto:help@gocerise.com' },
                 ].map(link => (
                   <a key={link.label} href={link.href}
