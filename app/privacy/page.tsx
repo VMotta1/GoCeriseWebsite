@@ -26,8 +26,8 @@ export default function PrivacyPage() {
           </h1>
 
           <div style={{ marginTop: 20, fontSize: 15, color: 'rgba(52,52,52,0.7)' }}>
-            <div>Effective date: {PRIVACY_EFFECTIVE_DATE}</div>
             <div>Last updated: {PRIVACY_LAST_UPDATED}</div>
+            <div>Effective date: {PRIVACY_EFFECTIVE_DATE}</div>
           </div>
 
           <nav
@@ -69,22 +69,6 @@ export default function PrivacyPage() {
               )}
 
               <LegalBlocks blocks={section.blocks} />
-
-              {section.subsections?.map(subsection => (
-                <section
-                  key={subsection.id}
-                  id={subsection.id}
-                  style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 16, scrollMarginTop: 120 }}
-                >
-                  <h3
-                    className="legal-subheading"
-                    style={{ fontSize: 20, fontWeight: 700, margin: 0, lineHeight: 1.35 }}
-                  >
-                    {subsection.heading}
-                  </h3>
-                  <LegalBlocks blocks={subsection.blocks} />
-                </section>
-              ))}
             </section>
           ))}
 

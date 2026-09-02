@@ -10,13 +10,6 @@ export type LegalBlock =
   | { kind: 'list'; items: readonly LegalListItem[] }
   | { kind: 'table'; columns: readonly string[]; rows: readonly (readonly string[])[] }
 
-/** A numbered clause, optionally split into lettered/decimal subsections. */
-export type LegalSubsection = {
-  id: string
-  heading: string
-  blocks: readonly LegalBlock[]
-}
-
 export type LegalSection = {
   id: string
   /** Omitted for a preamble that runs straight into the body. */
@@ -24,7 +17,6 @@ export type LegalSection = {
   /** Shown in the table of contents; defaults to `heading`. */
   tocLabel?: string
   blocks: readonly LegalBlock[]
-  subsections?: readonly LegalSubsection[]
 }
 
 export const paragraph = (text: string): LegalBlock => ({ kind: 'paragraph', text })

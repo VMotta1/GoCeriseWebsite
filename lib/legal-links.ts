@@ -5,10 +5,13 @@ export type LegalSegment =
   | { kind: 'url'; value: string; href: string }
 
 const EMAIL = String.raw`[\w.+-]+@[\w-]+(?:\.[\w-]+)+`
-const GOCERISE_URL = String.raw`(?:www\.)?gocerise\.com(?:\/[\w-]+)*`
+/** Any www-prefixed host, e.g. www.gocerise.com or the regulator at www.priv.gc.ca. */
+const WWW_URL = String.raw`www\.[\w-]+(?:\.[\w-]+)+(?:\/[\w-]+)*`
+/** Our own domain is also written without the www prefix. */
+const BARE_GOCERISE_URL = String.raw`gocerise\.com(?:\/[\w-]+)*`
 
 /** Capturing group so String.split keeps the matches interleaved with the prose. */
-const LINKABLE = new RegExp(`(${EMAIL}|${GOCERISE_URL})`, 'g')
+const LINKABLE = new RegExp(`(${EMAIL}|${WWW_URL}|${BARE_GOCERISE_URL})`, 'g')
 
 const isEmail = (value: string): boolean => value.includes('@')
 
@@ -22,7 +25,7 @@ const toSegment = (value: string, index: number): LegalSegment => {
 
 /**
  * Splits a paragraph into renderable segments, turning email addresses and
- * gocerise.com URLs written inline in the legal copy into links.
+ * web addresses written inline in the legal copy into links.
  */
 export function toLegalSegments(text: string): readonly LegalSegment[] {
   return text

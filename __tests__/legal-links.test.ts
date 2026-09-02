@@ -63,3 +63,18 @@ describe('toLegalSegments — bare gocerise.com', () => {
     ])
   })
 })
+
+describe('toLegalSegments — non-gocerise hosts', () => {
+  it('links any www-prefixed host', () => {
+    expect(toLegalSegments('contact them at www.priv.gc.ca')).toEqual([
+      { kind: 'text', value: 'contact them at ' },
+      { kind: 'url', value: 'www.priv.gc.ca', href: 'https://www.priv.gc.ca' },
+    ])
+  })
+
+  it('leaves a bare non-gocerise domain as plain text', () => {
+    expect(toLegalSegments('hosted on example.com today')).toEqual([
+      { kind: 'text', value: 'hosted on example.com today' },
+    ])
+  })
+})
