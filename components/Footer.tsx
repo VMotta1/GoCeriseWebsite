@@ -1,5 +1,7 @@
 'use client'
 
+import StoreBadges from './StoreBadges'
+
 export default function Footer() {
   return (
     <footer
@@ -62,6 +64,9 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+
+            {/* App store badges, sitting in the gap between the two link columns */}
+            <StoreBadges />
 
             {/* Legal & Support */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginLeft: 'auto' }}>
