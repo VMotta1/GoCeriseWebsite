@@ -122,7 +122,7 @@ export const RIGHTS_SECTIONS_FR: readonly LegalSection[] = [
         },
       ]),
       paragraph(
-        'Les images de produits affichées dans l’application sont chargées depuis les serveurs des détaillants en alimentation eux-mêmes, comme il est décrit à la section 4. Nous ne possédons, n’exploitons ni ne contrôlons aucun de ces services, et nous ne sommes pas responsables de la façon dont ils traitent vos renseignements. Nous vous encourageons à consulter leurs politiques de confidentialité et à communiquer directement avec eux pour toute préoccupation concernant leurs pratiques.',
+        'Les images de produits affichées dans l’application sont chargées depuis les serveurs des détaillants en alimentation eux-mêmes, comme il est décrit à la section « Avec qui nous partageons les renseignements ». Nous ne possédons, n’exploitons ni ne contrôlons aucun de ces services, et nous ne sommes pas responsables de la façon dont ils traitent vos renseignements. Nous vous encourageons à consulter leurs politiques de confidentialité et à communiquer directement avec eux pour toute préoccupation concernant leurs pratiques.',
       ),
     ],
   },

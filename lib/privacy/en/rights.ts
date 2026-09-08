@@ -113,7 +113,7 @@ export const RIGHTS_SECTIONS: readonly LegalSection[] = [
         { lead: 'You open a link out of the app,', text: 'which opens in your device’s browser.' },
       ]),
       paragraph(
-        'Product images shown inside the app are loaded from the grocery retailers’ own servers, as described in section 4. We do not own, operate, or control any of these services, and we are not responsible for how they handle your information. We encourage you to review their privacy policies, and to contact them directly with any concerns about their practices.',
+        'Product images shown inside the app are loaded from the grocery retailers’ own servers, as described in the section “Who We Share Information With”. We do not own, operate, or control any of these services, and we are not responsible for how they handle your information. We encourage you to review their privacy policies, and to contact them directly with any concerns about their practices.',
       ),
     ],
   },
