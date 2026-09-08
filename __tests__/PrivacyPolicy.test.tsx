@@ -1,8 +1,8 @@
 import { render, screen, within } from '@testing-library/react'
 import PrivacyPage from '@/app/privacy/page'
-import { PRIVACY_SECTIONS } from '@/lib/privacy'
+import { PRIVACY_EN } from '@/lib/privacy/en'
 
-describe('Privacy Policy page', () => {
+describe('Privacy Policy page (English)', () => {
   it('renders the title and both dates', () => {
     render(<PrivacyPage />)
     expect(screen.getByRole('heading', { level: 1, name: 'GoCerise Privacy Policy' })).toBeInTheDocument()
@@ -12,7 +12,7 @@ describe('Privacy Policy page', () => {
 
   it('renders every clause heading', () => {
     render(<PrivacyPage />)
-    const headings = PRIVACY_SECTIONS.map(s => s.heading).filter(Boolean) as string[]
+    const headings = PRIVACY_EN.sections.map(s => s.heading).filter(Boolean) as string[]
     expect(headings).toContain('No Account Required')
     expect(headings).toContain('Data Retention')
     expect(headings).toContain('Contact Us')
@@ -26,7 +26,7 @@ describe('Privacy Policy page', () => {
     const toc = screen.getByRole('navigation', { name: 'Table of contents' })
     expect(within(toc).getByRole('link', { name: 'Introduction' })).toHaveAttribute('href', '#preamble')
     expect(within(toc).getByRole('link', { name: 'Your Rights' })).toHaveAttribute('href', '#your-rights')
-    expect(within(toc).getAllByRole('link')).toHaveLength(PRIVACY_SECTIONS.length)
+    expect(within(toc).getAllByRole('link')).toHaveLength(PRIVACY_EN.sections.length)
   })
 
   it('renders the three reference tables with their headers', () => {
@@ -52,5 +52,14 @@ describe('Privacy Policy page', () => {
       screen.getByText(/Act respecting the protection of personal information in the private sector/),
     ).toBeInTheDocument()
     expect(screen.getByText(/no accounts and no sign-in/)).toBeInTheDocument()
+  })
+
+  it('offers an EN / FR switch that marks the current language', () => {
+    render(<PrivacyPage />)
+    const languages = screen.getByRole('navigation', { name: 'Language' })
+    expect(within(languages).getByRole('link', { name: 'en' })).toHaveAttribute('href', '/privacy')
+    expect(within(languages).getByRole('link', { name: 'fr' })).toHaveAttribute('href', '/fr/privacy')
+    expect(within(languages).getByRole('link', { name: 'en' })).toHaveAttribute('aria-current', 'page')
+    expect(within(languages).getByRole('link', { name: 'fr' })).not.toHaveAttribute('aria-current')
   })
 })

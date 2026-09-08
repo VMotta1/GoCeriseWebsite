@@ -1,10 +1,4 @@
-export type TermsSection = {
-  /** Stable anchor id used for deep-linking to a clause. */
-  id: string
-  /** Omitted for the preamble, which has no heading. */
-  heading?: string
-  paragraphs: readonly string[]
-}
+import type { TermsSection } from './section'
 
 export const TERMS_LAST_UPDATED = 'August 28th, 2026'
 export const TERMS_EFFECTIVE_DATE = 'August 28th, 2026'
