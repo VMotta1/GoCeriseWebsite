@@ -74,6 +74,15 @@ export default function Navbar() {
             How it works
           </a>
           <a
+            href="/#faq"
+            className="nav-link"
+            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+          >
+            FAQ
+          </a>
+          <a
             href="/#about"
             className="nav-link"
             style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
