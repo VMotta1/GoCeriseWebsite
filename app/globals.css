@@ -45,6 +45,16 @@ body {
 @media (max-width: 1023px) { .hero-title { font-size: 56px; } }
 @media (max-width: 767px) { .hero-title { font-size: 38px; } }
 
+/* Section headings. HowItWorks and Waitlist also set these inline; inline wins,
+   so this is the shared base for any section that does not. */
+.section-title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 100%;
+  color: #343434;
+  text-align: center;
+}
+
 @media (max-width: 1023px) {
   .how-section { padding: 80px 32px !important; gap: 48px !important; }
   .section-title { font-size: 38px !important; }
@@ -108,4 +118,95 @@ body {
   .legal-title { font-size: 30px !important; }
   .legal-heading { font-size: 21px !important; }
   .legal-body { font-size: 16px !important; }
+}
+
+/* FAQ — adopts the carousel step-card treatment: cream surface, no border,
+   the site's single shadow, radius 30. Green stays reserved for CTAs. */
+.faq-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 64px 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  background: #FFFBF0;
+}
+.faq-list {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faq-item {
+  border-radius: 30px;
+  background: #FFFBF0;
+  box-shadow: 0px 4px 10px rgba(52, 52, 52, 0.15);
+}
+
+/* Suppress the native disclosure triangle in every engine */
+.faq-question { list-style: none; }
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::marker { content: ''; }
+
+.faq-question {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+.faq-question-text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  color: #343434;
+}
+.faq-question:focus-visible {
+  outline: 2px solid #6A8E24;
+  outline-offset: -4px;
+}
+
+/* Matches the carousel arrows: 0.6 resting, full on hover */
+.faq-chevron {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transform: translateY(2px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.faq-question:hover .faq-chevron { opacity: 1; }
+.faq-item[open] .faq-chevron { transform: translateY(2px) rotate(180deg); }
+
+.faq-answer {
+  margin: 0;
+  padding: 0 32px 32px;
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 150%;
+  color: #343434;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-chevron { transition: none; }
+}
+
+@media (max-width: 1023px) {
+  .faq-section { padding: 48px 32px 80px; gap: 48px; }
+  .faq-list { gap: 20px; }
+  .faq-question { padding: 28px; gap: 24px; }
+  .faq-question-text { font-size: 18px; }
+  .faq-answer { padding: 0 28px 28px; }
+}
+@media (max-width: 767px) {
+  .faq-section { padding: 32px 20px 64px; gap: 32px; }
+  .faq-list { gap: 16px; }
+  .faq-item { border-radius: 24px; }
+  .faq-question { padding: 22px; gap: 16px; border-radius: 24px; }
+  .faq-question-text { font-size: 17px; }
+  .faq-answer { padding: 0 22px 22px; }
 }
