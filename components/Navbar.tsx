@@ -16,6 +16,7 @@ export default function Navbar() {
 
   return (
     <div
+      className="nav-outer"
       style={{
         position: 'fixed',
         top: 0,
@@ -28,6 +29,7 @@ export default function Navbar() {
     >
       <nav
         role="navigation"
+        className="nav-bar"
         data-scrolled={String(scrolled)}
         style={{
           pointerEvents: 'all',
@@ -63,11 +65,11 @@ export default function Navbar() {
           <LogoSVG />
         </a>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
           <a
             href="/#how"
             className="nav-link"
-            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
+            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s', whiteSpace: 'nowrap' }}
             onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
@@ -76,7 +78,7 @@ export default function Navbar() {
           <a
             href="/#faq"
             className="nav-link"
-            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
+            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s', whiteSpace: 'nowrap' }}
             onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
@@ -85,7 +87,7 @@ export default function Navbar() {
           <a
             href="/#about"
             className="nav-link"
-            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s' }}
+            style={{ fontSize: 15, color: '#343434', textDecoration: 'none', padding: '8px 16px', borderRadius: 1000, transition: 'background 0.2s', whiteSpace: 'nowrap' }}
             onMouseEnter={e => (e.currentTarget.style.background = 'rgba(52,52,52,0.06)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
@@ -93,7 +95,9 @@ export default function Navbar() {
           </a>
           <a
             href="/#waitlist"
+            className="nav-cta"
             style={{
+              whiteSpace: 'nowrap',
               fontSize: 15,
               fontWeight: 700,
               color: '#FFFBF0',

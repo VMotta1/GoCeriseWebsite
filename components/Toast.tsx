@@ -24,7 +24,8 @@ export default function Toast({ show, message }: ToastProps) {
         fontWeight: 600,
         boxShadow: '0px 4px 10px rgba(0,0,0,0.15)',
         zIndex: 999,
-        whiteSpace: 'nowrap',
+        maxWidth: 'calc(100vw - 32px)',
+        textAlign: 'center',
         transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
         pointerEvents: 'none',
       }}

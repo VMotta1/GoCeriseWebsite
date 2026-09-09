@@ -41,6 +41,7 @@ export default function Footer() {
                     <a key={link.label} href={link.href}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="footer-link"
                       style={{ fontSize: 15, color: '#343434', textDecoration: 'none', transition: 'opacity 0.2s' }}
                       onMouseEnter={e => (e.currentTarget.style.opacity = '0.6')}
                       onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
@@ -56,6 +57,7 @@ export default function Footer() {
                     <a key={link.label} href={link.href}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="footer-link"
                       style={{ fontSize: 15, color: '#343434', textDecoration: 'none', transition: 'opacity 0.2s' }}
                       onMouseEnter={e => (e.currentTarget.style.opacity = '0.6')}
                       onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
@@ -69,7 +71,7 @@ export default function Footer() {
             <StoreBadges />
 
             {/* Legal & Support */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginLeft: 'auto' }}>
+            <div className="footer-legal" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginLeft: 'auto' }}>
               <div style={{ fontWeight: 700, fontSize: 20, color: '#343434' }}>Legal &amp; Support</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {[
@@ -78,6 +80,7 @@ export default function Footer() {
                   { label: 'help@gocerise.com', href: 'mailto:help@gocerise.com' },
                 ].map(link => (
                   <a key={link.label} href={link.href}
+                    className="footer-link"
                     style={{ fontSize: 15, color: '#343434', textDecoration: 'none', transition: 'opacity 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.opacity = '0.6')}
                     onMouseLeave={e => (e.currentTarget.style.opacity = '1')}

@@ -4,11 +4,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         position: 'sticky',
         top: 0,
         width: '100%',
-        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -33,6 +33,8 @@ export default function Hero() {
           alignItems: 'center',
           gap: 64,
           padding: '0 20px',
+          width: '100%',
+          maxWidth: 840,
         }}
       >
         <h1

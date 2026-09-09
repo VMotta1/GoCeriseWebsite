@@ -229,19 +229,83 @@ body {
   display: block;
   width: auto;
   height: 52px;
+  /* Tailwind preflight sets img{max-width:100%}, which would clamp the badge to
+     its column - a column sized by the badge itself, so it resolves circularly. */
+  max-width: none;
 }
 
 .footer-badge-google {
   display: block;
   width: auto;
   height: 77px;
-  margin-top: -13px;
-  margin-bottom: -13px;
+  /* Cancel the clear space Google bakes into all four sides of its canvas, so
+     the element's box matches the visible badge. Without the horizontal half,
+     the badge sits ~13px inset from Apple's left edge whenever the column is
+     left-aligned, and its centre is off when the column is centred. */
+  margin: -13px;
+  max-width: none;
 }
 
 @media (max-width: 1023px) {
   .footer-badges {
     flex: 0 0 auto;
     align-items: flex-start;
+  }
+}
+
+/* --- Responsive corrections --- */
+
+/* Mobile browser chrome makes 100vh taller than the visible viewport, which
+   pushed the hero form below the fold. dvh tracks the real height. */
+.hero-section {
+  height: 100vh;
+  height: 100dvh;
+}
+
+@media (max-width: 1023px) {
+  /* At tablet width the four nav items no longer fit at a 32px gap and wrapped
+     onto two lines each. */
+  .nav-actions { gap: 12px !important; }
+  .nav-link { padding: 8px 10px !important; }
+}
+
+@media (max-width: 767px) {
+  /* Only the logo and the CTA remain, so the CTA can breathe again. The bar's
+     own padding was consuming 96px of a 320px screen. */
+  .nav-outer { padding: 12px 12px 0 !important; }
+  .nav-bar { padding: 8px !important; }
+  .nav-actions { gap: 8px !important; }
+  .nav-cta { font-size: 14px !important; padding: 8px 12px !important; }
+
+  /* Once the footer columns wrap, an auto left margin pins this one to the
+     right edge while its siblings stay left. */
+  .footer-legal { margin-left: 0 !important; }
+  /* Give the badges their own row instead of crowding the Contact list. */
+  .footer-badges { flex-basis: 100%; align-self: flex-start; align-items: flex-start; }
+}
+
+/* Footer links were 23px tall. The padding lifts the touch target toward the
+   44px guideline; the negative margin keeps the visual spacing unchanged. */
+.footer-link {
+  display: inline-block;
+  padding: 8px 0;
+  margin: -8px 0;
+}
+
+@media (max-width: 767px) {
+  /* The logo left too little of a 296px bar for the CTA beside it. */
+  .nav-logo { height: 32px !important; }
+
+  /* Arrows plus phone measured 348px, wider than the screen. Let the phone
+     take whatever is left once the two arrows have their space. */
+  .carousel-row { gap: 8px !important; justify-content: center; }
+  .carousel-arrow { width: 32px !important; height: 32px !important; flex-shrink: 0; }
+  /* Every ancestor here is align-items:center, so there is no definite width to
+     take a percentage of; a % would resolve circularly to zero. Size off the
+     viewport instead: 40px section padding + 64px of arrows + 16px of gaps. */
+  .phone-wrap {
+    width: min(220px, calc(100vw - 128px)) !important;
+    height: auto !important;
+    aspect-ratio: 310 / 649;
   }
 }

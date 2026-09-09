@@ -81,11 +81,12 @@ export default function Carousel({ steps }: CarouselProps) {
 
         {/* Phone column — arrows flank the phone image so they work on all screen sizes */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+          <div className="carousel-row" style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
             {/* Prev arrow */}
             <button
               onClick={() => goToSlide(active - 1)}
               aria-label="Previous"
+              className="carousel-arrow"
               style={arrowStyle}
               onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
@@ -125,6 +126,7 @@ export default function Carousel({ steps }: CarouselProps) {
             <button
               onClick={() => goToSlide(active + 1)}
               aria-label="Next"
+              className="carousel-arrow"
               style={arrowStyle}
               onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
@@ -136,23 +138,35 @@ export default function Carousel({ steps }: CarouselProps) {
           </div>
 
           {/* Dots */}
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: 0, justifyContent: 'center' }}>
             {steps.map((_, i) => (
               <button
                 key={i}
                 onClick={() => goToSlide(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 style={{
-                  width: 8, height: 8,
-                  borderRadius: '50%',
-                  background: '#343434',
-                  opacity: i === active ? 1 : 0.2,
+                  width: 32,
+                  height: 32,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'none',
                   border: 'none',
                   cursor: 'pointer',
                   padding: 0,
-                  transition: 'opacity 0.2s',
                 }}
-              />
+              >
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: '#343434',
+                    opacity: i === active ? 1 : 0.2,
+                    transition: 'opacity 0.2s',
+                  }}
+                />
+              </button>
             ))}
           </div>
         </div>

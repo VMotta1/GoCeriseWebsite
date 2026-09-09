@@ -6,6 +6,7 @@ export default function LogoSVG() {
       viewBox="0 0 157 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="nav-logo"
       style={{ height: 40, width: 'auto' }}
       aria-label="GoCerise"
     >

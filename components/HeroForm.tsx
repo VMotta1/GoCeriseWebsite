@@ -35,6 +35,7 @@ export default function HeroForm() {
     <>
       <form
         onSubmit={handleSubmit}
+        className="hero-form"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -42,7 +43,8 @@ export default function HeroForm() {
           borderRadius: 1500,
           boxShadow: '0px 4px 10px rgba(0,0,0,0.15)',
           padding: 8,
-          width: 342,
+          width: '100%',
+          maxWidth: 342,
           height: 50,
         }}
       >
