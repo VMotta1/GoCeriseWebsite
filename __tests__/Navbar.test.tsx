@@ -6,14 +6,14 @@ describe('Navbar', () => {
     render(<Navbar />)
     expect(screen.getByText('How it works')).toBeInTheDocument()
     expect(screen.getByText('FAQ')).toBeInTheDocument()
-    expect(screen.getByText('About us')).toBeInTheDocument()
+    expect(screen.queryByText('About us')).not.toBeInTheDocument()
     expect(screen.getByText('Join Mailing List')).toBeInTheDocument()
   })
 
-  it('lists FAQ between How it works and About us', () => {
+  it('lists How it works then FAQ', () => {
     const { container } = render(<Navbar />)
     const labels = Array.from(container.querySelectorAll('a.nav-link')).map(a => a.textContent)
-    expect(labels).toEqual(['How it works', 'FAQ', 'About us'])
+    expect(labels).toEqual(['How it works', 'FAQ'])
     expect(screen.getByText('FAQ').closest('a')).toHaveAttribute('href', '/#faq')
   })
 
