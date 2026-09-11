@@ -48,9 +48,11 @@ describe('Carousel', () => {
     expect(screen.getAllByRole('img')[2]).toHaveStyle({ opacity: '1' })
   })
 
-  it('auto-advances every 4 seconds', () => {
+  it('holds each screen for 6.5 seconds before advancing', () => {
     render(<Carousel steps={steps} />)
-    act(() => jest.advanceTimersByTime(4000))
+    act(() => jest.advanceTimersByTime(6400))
+    expect(screen.getAllByRole('img')[0]).toHaveStyle({ opacity: '1' })
+    act(() => jest.advanceTimersByTime(100))
     expect(screen.getAllByRole('img')[1]).toHaveStyle({ opacity: '1' })
   })
 })

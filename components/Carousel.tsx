@@ -14,6 +14,12 @@ interface CarouselProps {
   steps: Step[]
 }
 
+/** How long each screen stays on show before the carousel advances itself. */
+const SLIDE_DURATION_MS = 6500
+
+/** Crossfade between screens, eased to match the slower pace. */
+const SLIDE_FADE = 'opacity 0.7s ease'
+
 const arrowStyle: React.CSSProperties = {
   width: 40,
   height: 40,
@@ -35,7 +41,7 @@ export default function Carousel({ steps }: CarouselProps) {
   const goToSlide = (n: number) => setActive(((n % total) + total) % total)
 
   useEffect(() => {
-    const timer = setInterval(() => setActive(a => (a + 1) % total), 4000)
+    const timer = setInterval(() => setActive(a => (a + 1) % total), SLIDE_DURATION_MS)
     return () => clearInterval(timer)
   }, [total])
 
@@ -65,7 +71,7 @@ export default function Carousel({ steps }: CarouselProps) {
                 cursor: 'pointer',
                 minHeight: 168,
                 opacity: i === active ? 1 : 0.4,
-                transition: 'opacity 0.25s ease',
+                transition: SLIDE_FADE,
               }}
             >
               <div
@@ -115,7 +121,7 @@ export default function Carousel({ steps }: CarouselProps) {
                     height: '100%',
                     objectFit: 'contain',
                     opacity: i === active ? 1 : 0,
-                    transition: 'opacity 0.4s ease',
+                    transition: SLIDE_FADE,
                     pointerEvents: i === active ? 'auto' : 'none',
                   }}
                 />
